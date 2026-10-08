@@ -25,15 +25,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class FlashlightScreen extends StatelessWidget {
-  const FlashlightScreen({super.key, requrired this.title});
+class FlashlightScreen extends StatefulWidget {
+  const FlashlightScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<FlashlightScreen> createState() => State<FlashlightScreen>
+  State<FlashlightScreen> createState() => _FlashlightSceenState();
+}
 
-  {
+class _FlashlightScreenState extends State<FlashlightScreen> {
 
   bool _isTorchOn = false;
 
@@ -58,17 +59,14 @@ class FlashlightScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scafold(
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversPrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         centerTitle: true,
       ),
       body: Center(
-        chile: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
@@ -77,14 +75,14 @@ class FlashlightScreen extends StatelessWidget {
               color: _isTorchOn ? Colors.yellow : Colors.grey,
             ),
             const SizedBox(height: 30),
-            ElevateButton(
-              style: ElevateButton.styleFrom(
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 40, vertical: 15),
-                backgroundColro: _isTorchOn ? Colors.red : Colors.green,
+                backgroundColor: _isTorchOn ? Colors.red : Colors.green,
               ),
               onPressed: _toggleTorch,
-              chile: Text(
+              child: Text(
                 _isTorchOn ? 'TURN OFF' : 'TURN ON',
                 style: const TextStyle(fontSize: 20, color: Colors.white),
               ),
