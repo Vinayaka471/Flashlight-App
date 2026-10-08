@@ -31,7 +31,7 @@ class FlashlightScreen extends StatefulWidget {
   final String title;
 
   @override
-  State<FlashlightScreen> createState() => _FlashlightSceenState();
+  State<FlashlightScreen> createState() => _FlashlightScreenState();
 }
 
 class _FlashlightScreenState extends State<FlashlightScreen> {
